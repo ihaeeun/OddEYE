@@ -1,0 +1,10 @@
+avante2016ad
+ 0.89054 
+grandeur2012
+ 0.07555 
+k52016sx
+ 0.02467 
+genesis
+ 0.00499 
+grandeur2016hg
+ 0.00425 
