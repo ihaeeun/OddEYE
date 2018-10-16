@@ -22,10 +22,11 @@ if($_SESSION['id']==null) { // 로그인 하지 않았다면
 	   <input type="password" name="pw" placeholder="PASSWORD">
 	   <input type="submit" name="login" value="Login">
 	</form>
+	<form action="signup.php" method="post">
+		<input type="submit" name="signup" value="Sign Up">
+	</form>
 </body>
 </html>
-
-
 
 
 <?php

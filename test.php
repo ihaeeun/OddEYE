@@ -31,14 +31,15 @@ $row = mysqli_fetch_array($result);
 	</div>
 	<div>
 		<?php 
-			$fp = fopen("result/test.txt", "r");
+			$fp = fopen("result/json.txt", "r");
 			if(!$fp){ echo ("error"); }
-			while(!feof($fp)){
-				$str=fgets($fp, 10000);
-				$arr[]=$str;
-			}
-
-			for($i=0; $i<sizeof($arr); $i++){
+			#while(!feof($fp)){
+			#	$str=fgets($fp, 10000);
+			#	$arr[]=$str;
+			#}
+			$fr = fread($fp, filesize("result/json.txt"));
+			echo("$fr")
+			/*for($i=0; $i<sizeof($arr); $i++){
 				if($i%2==0){ 
 					$model[] = array('Model'=> $arr[$i]);
 					#$model[$i] = $arr[$i]; 
@@ -58,69 +59,32 @@ $row = mysqli_fetch_array($result);
 			$ratej = json_encode($rate);
 			
 			echo("$modelj<br><br>");
-			echo("$ratej");
+			echo("$ratej")*/
 		?>
-		<!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     	<script type="text/javascript" language="javascript">
-			google.charts.load('current', {'packages':['line']});
-      		google.charts.setOnLoadCallback(drawChart);
-			function drawChart() {							
-				//var model = new Array(<?= json_encode($model) ?>);
-				//var rate = new Array(<?= json_encode($rate) ?>);
-				var model = new <?= $modelj ?>;
-				var rate = new <?= $ratej ?>;
-				var data = new google.visualization.DataTable();
-				data.addColumn('string', 'Model');
-				data.addColumn('number', 'Accuracy');
-				for (var i=0; i<model.length; i++){
-					data.addRows([
-						model[i].Model, 
-						rate[i].Accuracy,
-					]);
-				}
-				var options = {
-					chart: { title: '차종조회결과' },
-					width: 900,
-					height: 500
-				};	
-				var chart = new.google.charts.Line(document.getElementById('linechart_material'));
-				chart.draw(data, google.charts.Line.convertOptions(options));
+			//var result = '<?= $fr ?>';
+			//alert(result);
+			google.charts.load('current', {'packages':['bar']});
+      		google.charts.setOnLoadCallback(drawStuff);
+			function drawChart() {
+				var result = '<?= $fr ?>';
+
+				//Use getJSON and process the file contents in the callback function
+				$.getJSON(result + '.json', function(obj) {
+
+					var data = google.visualization.arrayToDataTable(obj);
+
+					var options = {
+						title: 'Chart Demo'
+					};
+
+					var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+					chart.draw(data, options);
+				});
 			}
-		</script>-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawStuff);
+		</script>
 
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['Opening Move', 'Percentage'],
-          ["King's pawn (e4)", 44],
-          ["Queen's pawn (d4)", 31],
-          ["Knight to King 3 (Nf3)", 12],
-          ["Queen's bishop pawn (c4)", 10],
-          ['Other', 3]
-        ]);
-
-        var options = {
-          title: 'Chess opening moves',
-          width: 900,
-          legend: { position: 'none' },
-          chart: { title: 'Chess opening moves',
-                   subtitle: 'popularity by percentage' },
-          bars: 'horizontal', // Required for Material Bar Charts.
-          axes: {
-            x: {
-              0: { side: 'top', label: 'Percentage'} // Top x-axis.
-            }
-          },
-          bar: { groupWidth: "90%" }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
-        chart.draw(data, options);
-      };
-    </script>
 	</div>
 	
 </body>

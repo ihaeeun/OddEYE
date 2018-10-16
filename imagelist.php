@@ -1,10 +1,10 @@
 <?php
 
 session_start(); // 세션
-include ("connectb.php"); // DB접속
+include ("connect.php"); // DB접속
 
 $carnum = $_POST['carnum'];
-$query = "select * from image where car_num='$carnum'";
+$query = "select * from image where CAR_NUM='$carnum'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 
@@ -35,11 +35,10 @@ if(!$row){
 			<?php
 				for($i=0; $i<7; $i++){
 					while ($row=$result->fetch_assoc()){
-						$key=$row['file_name'];
+						$key=$row['FILE_NAME'];
 						echo("<form method='POST' action='view.php'>");
-							echo("<input type='image' src='".$row['file_path'].$row['file_name']."' />");
-							echo("<input type='hidden' name='key' value='$key' />
-							</form>");
+						echo("<input type='image' src='".$row['FILE_ROUTE'].$row['FILE_NAME']."' />");
+						echo("<input type='hidden' name='key' value='$key' /></form>");
 					}
 				}
 			?>

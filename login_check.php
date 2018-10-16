@@ -8,15 +8,15 @@ include ("connect.php"); // DB접속
 $id = $_POST['id']; // 아이디
 $pw = $_POST['pw']; // 패스워드
 
-$query = "select * from login where id='$id' and password='$pw'";
+$query = "select * from client where ID='$id' and PW='$pw'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 
 
 
-if($id==$row['id'] && $pw==$row['password']){ // id와 pw가 맞다면 login
+if($id==$row['ID'] && $pw==$row['PW']){ // id와 pw가 맞다면 login
 
-   $_SESSION['id']=$row['id'];
+   $_SESSION['id']=$row['ID'];
    $_SESSION['name']=$row['name'];
    echo "<script>location.href='login.php';</script>";
 

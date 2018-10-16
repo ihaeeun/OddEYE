@@ -3,7 +3,7 @@
 $db_host = "localhost";
 $db_user = "root";
 $db_password = "1111";
-$db_name = "blackbox";
+$db_name = "ODDEYE";
 
 
 $con = new mysqli($db_host, $db_user, $db_password, $db_name); // 데이터베이스 접속
