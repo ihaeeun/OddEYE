@@ -6,7 +6,7 @@ include ("connectb.php"); // DB접속
 
 $carnum = $_POST['carnum'];
 
-$query = "select * from video where car_num='$carnum'";
+$query = "select * from VIDEO where car_num='$carnum'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 

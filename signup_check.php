@@ -9,7 +9,7 @@
 	$phone = $_POST['phone'];
 	$grade = $_POST['grade'];
 
-$query = "insert into client (ID,PW,NAME,ADDRESS,PHONE_NUM,GRADE) values('".$userid."','".$userpw."','".$username."','".$adress."','".$phone."','".$grade."')";
+$query = "insert into CLIENT (ID,PW,NAME,ADDRESS,PHONE_NUM,GRADE) values('".$userid."','".$userpw."','".$username."','".$adress."','".$phone."','".$grade."')";
 $
 
 ?>

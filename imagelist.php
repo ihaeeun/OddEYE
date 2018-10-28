@@ -4,7 +4,7 @@ session_start(); // 세션
 include ("connect.php"); // DB접속
 
 $carnum = $_POST['carnum'];
-$query = "select * from image where CAR_NUM='$carnum'";
+$query = "select * from IMAGE where CAR_NUM='$carnum'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 

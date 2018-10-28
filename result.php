@@ -3,7 +3,7 @@ session_start(); // 세션
 include ("connectb.php"); // DB접속
 
 $key=$_POST['key'];
-$query = "select * from image where file_name='$key'";
+$query = "select * from IMAGE where file_name='$key'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 ?>
