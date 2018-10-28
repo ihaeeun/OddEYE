@@ -1,1 +1,0 @@
-{{"model" : "avante2016ad", "accuracy" : "0.87631"}{"model" : "grandeur2012", "accuracy" : "0.08667"}{"model" : "k52016sx", "accuracy" : "0.02673"}{"model" : "genesis", "accuracy" : "0.00518"}{"model" : "grandeur2016hg", "accuracy" : "0.00511"}}

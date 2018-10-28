@@ -1,9 +1,9 @@
 <?php
 session_start(); // 세션
-include ("connectb.php"); // DB접속
+include ("connect.php"); // DB접속
 
 $key=$_POST['key'];
-$query = "select * from image where file_name='$key'";
+$query = "select * from image where FILE_NAME='$key'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 #$path = $row['file_path'].$row['file_name'];
@@ -23,7 +23,7 @@ $row = mysqli_fetch_array($result);
 		<a href='logout.php'>logout</a>
 		</div>
 	</div>
-	<?php echo("<img src='".$row['file_path'].$row['file_name']."' width='500'>");?>
+	<?php echo("<img src='".$row['FILE_ROUTE'].$row['FILE_NAME']."' width='500'>");?>
 	
 	<p></p>
 	<form action="test.php" method="POST">
