@@ -1,9 +1,9 @@
 <?php
 session_start(); // 세션
-include ("connectb.php"); // DB접속
+include ("connect.php"); // DB접속
 
 $key=$_POST['key'];
-$query = "select * from IMAGE where file_name='$key'";
+$query = "select * from IMAGE where FILE_NAME='$key'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 ?>
@@ -26,24 +26,16 @@ $row = mysqli_fetch_array($result);
 
 	<div>
 		<div align="center" >
-			<?php echo("<img src='".$row['file_path'].$row['file_name']."' width='400'>	"); ?>	
+			<?php echo("<img src='".$row['FILE_ROUTE'].$row['FILE_NAME']."' width='400'>	"); ?>	
 		</div>
 	</div>
 	<div>
 		<?php 
-			$fp = fopen("result/test.txt", "r");
+			$fp = fopen("result/data.json", "r");
 			if(!$fp){ echo ("error"); }
-			while(!feof($fp)){
-				$str=fgets($fp, 10000);
-				$arr[]=$str;
-			}
-
-			for($i=0; $i<sizeof($arr); $i++){
-				if($i%2==0){ $model[$i] = $arr[$i]; }
-				else{ $rate[$i] = $arr[$i]; }
-			}
-			fclose($fp);
-		?>	
+			$fr = fread($fp, filesize("result/data.json"));
+			echo("$fr")
+		?>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     	<script type="text/javascript" language="javascript">
 			google.charts.load('current', {'packages':['line']});
