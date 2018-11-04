@@ -13,7 +13,11 @@ $row = mysqli_fetch_array($result);
 	<meta charset="utf-8">
 	<title><?php echo("$key");?></title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	
+	<style>
+		body{
+			background-color: #23211f;
+		}
+	</style>
 </head>
 
 <body>
@@ -29,40 +33,42 @@ $row = mysqli_fetch_array($result);
 			<?php echo("<img src='".$row['FILE_ROUTE'].$row['FILE_NAME']."' width='400'>	"); ?>	
 		</div>
 	</div>
-	<div>
-		<?php 
-			$fp = fopen("result/data.json", "r");
-			if(!$fp){ echo ("error"); }
-			$fr = fread($fp, filesize("result/data.json"));
-			echo("$fr")
-		?>
-		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    	<script type="text/javascript" language="javascript">
-			google.charts.load('current', {'packages':['line']});
-      		google.charts.setOnLoadCallback(drawChart);
-			function drawChart() {
-				var data = new google.visualization.DataTable();
-				data.addColumn('rate', 'model');
-				data.addColumn('rate', 'model_name');
-							
-				var model = new Array(<?= json_encode($model) ?>);
-				var rate = new Array(<?= json_encode($rate) ?>);
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
 
-				for(var i=0; i<model.length; i++){
-					data.addRows([[model[i], rate[i]]]);
-				}
-				
-				var options = {
-					chart: { title: '차종조회결과' },
-					width: 900,
-					height: 500
-				};															
-				
-				var chart = new.google.charts.Line(document.getElementById('linechart_material'));
-				chart.draw(data, google.charts.Line.convertOptions(options));
-			}
-		</script>
-	</div>
-	
+      function drawStuff() {
+
+		var data = new google.visualization.arrayToDataTable([
+		  ['Model', 'Accuracy'],
+          ['avante2016ad', 0.87631],
+          ["grandeur 2012", 0.08667],
+          ["k52016sx", 0.02673],
+          ["genesis", 0.00511],
+          ["grandeur2016hg", 0.00511]
+        ]);
+
+        var options = {
+          title: 'Reslut of vehicle type analysis',
+          width: 900,
+          legend: { position: 'none' },
+          chart: { title: 'Result',
+                   subtitle: 'Tensorflow' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
+	<br><br><br>
+	    <div id="top_x_div" style="width: 900px; height: 500px; margin: auto;"></div>
 </body>
 </html>

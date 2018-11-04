@@ -5,6 +5,8 @@ body{
 	padding:0px;
 	font-family: 'Jeju Gothic';
 	text-align:center;
+	background-color: #23211f;
+	color: #fff
 }
 
 input[type="text"], input[type="password"]{
@@ -21,7 +23,7 @@ input[type="text"], input[type="password"]{
 input[type="submit"]{
 	padding:10px;
 	color:#fff;
-	background:#0098cb;
+	background:#d19d2b;
 	width:320px;
 	margin:20px auto;
 	margin-top:0px;
@@ -32,13 +34,13 @@ input[type="submit"]{
 }
 
 input[type="submit"]:hover{
-	background:#00b8eb;
+	background:#b58a2c;
 }
 
 .search input[type="submit"]{
 	padding:10px;
 	color:#fff;
-	background:#0098cb;
+	background:#d19d2b;
 	width:100px;
 	margin:20px auto;
 	margin-top:0px;
@@ -54,10 +56,11 @@ input[type="submit"]:hover{
 	width:100%;
 	text-align:center;
 	font-family: 'Jeju Gothic';
+	color: white;
 }
 
 .header a{
-	color:#333;
+	color:#fff;
 	text-decoration: none;
 }
 

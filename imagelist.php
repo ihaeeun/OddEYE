@@ -20,6 +20,17 @@ if(!$row){
 <meta charset="utf-8">
 <title><?php echo("$carnum")?></title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+		body{
+			background-image:url('res/imagefile/scene4_background.png');
+			background-color: #23211f;
+			background-size: cover;
+			
+		}
+		h1{
+	color: white;
+}
+	</style>
 </head>
 <body> 
 	<div class="header">
@@ -28,7 +39,9 @@ if(!$row){
 		<a href='logout.php'>logout</a>
 		</div>
 	</div>
-	<h4><?php echo "$carnum"?></h4>
+	<br><br><br><br><br><br><br>
+	<h1><?php echo "$carnum"?></h1>
+	<br><br><br><br><br>
 	<div class="thumbnail">
 		<table>
 		<tr>

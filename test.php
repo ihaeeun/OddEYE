@@ -29,23 +29,16 @@ $row = mysqli_fetch_array($result);
 			<?php echo("<img src='".$row['FILE_ROUTE'].$row['FILE_NAME']."' width='400'>	"); ?>	
 		</div>
 	</div>
-	<div>
-		<!--<?php 
-			$fp = fopen("result/data.json", "r");
-			if(!$fp){ echo ("error"); }
-			$fr = fread($fp, filesize("result/data.json"));
-			echo("$fr")
-		?>-->
-	</div>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawStuff);
 
       function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['Model', 'Accuracy'],
-          ["avante2016ad", 0.87631],
+
+		var data = new google.visualization.arrayToDataTable([
+		  ['Model', 'Accuracy'],
+          ['avante2016ad', 0.87631],
           ["grandeur 2012", 0.08667],
           ["k52016sx", 0.02673],
           ["genesis", 0.00511],
