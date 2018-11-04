@@ -5,6 +5,7 @@
 import numpy as np
 import tensorflow as tf
 import count_len4
+import os
 
 #imagePath를 최근에 들어온 사진으로 경로 수정 완료!!
 imagePath = count_len4.new_list[0]
@@ -30,6 +31,17 @@ def run_inference_on_image():
 
     image_data = tf.gfile.FastGFile(imagePath, 'rb').read()
 
+    # 11/4 HE
+    filepath = imagePath;
+    filename = os.path.basename(filepath)
+    print('file is %s' % (filename))
+
+    real_filename = os.path.splitext(filename)
+    print('real file is %s' % (real_filename[0]))
+
+    new_file = real_filename[0] + '.txt'
+
+
     # 저장된(saved) GraphDef 파일로부터 graph를 생성한다.
     create_graph()
 
@@ -47,8 +59,11 @@ def run_inference_on_image():
         lines = f.readlines()
         labels = [str(w).replace("", "") for w in lines]
 
+
+        txt_root = "/tmp/result_txt/"
+        new_root = os.path.join(txt_root, new_file)
         # 9/23 HE - 51
-        f = open("/tmp/result_txt/test.txt" ,'w')
+        f = open(new_root ,'w')
         for node_id in top_k:
             human_string = labels[node_id]
             score = predictions[node_id]
