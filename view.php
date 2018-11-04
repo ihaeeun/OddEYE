@@ -6,7 +6,7 @@ $key=$_POST['key'];
 $query = "select * from IMAGE where FILE_NAME='$key'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
-#$path = $row['file_path'].$row['file_name'];
+
 ?>
 <!doctype html>
 <html>
@@ -28,7 +28,10 @@ $row = mysqli_fetch_array($result);
 	<p></p>
 	<form action="test.php" method="POST">
 		<input name="key" type=submit value="차종 조회">
-		<?php echo("<input type='hidden' name='key' value='$key' />"); ?>
+		<?php echo("<input type='hidden' name='key' value='$key' />"); 
+		$query2 = "UPDATE IMAGE SET REQ=1 WHERE FILE_NAME='$key'";
+		mysqli_query($con, $query2);
+		?>
 	</form>
 </body>
 </html>

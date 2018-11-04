@@ -36,52 +36,41 @@ $row = mysqli_fetch_array($result);
 			$fr = fread($fp, filesize("result/data.json"));
 			echo("$fr")
 		?>-->
-		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-		<script type="test/javascript" src="reslut/data.json"></script>
-    	<script type="text/javascript" language="javascript" src="javascript.js">
-			google.charts.load('current', { 'packages':['bar']	});
-			google.charts.setOnLoadCallback(drawStuff);
-			var json = $.getJSON('result/data.json');
-			var jsonp = JSON.parse(json);
-			for(var i=0; i<json.model.length; i++){
-				//var counter = jsonp.model[i];
-				console.log(json.model);
-			}
-			/*function drawStuff(){
-				var json = $.get.JSON('result/data.json');
-				var jsonp = JSON.parse(json);
-				var data = new google.visualization.arrayToDataTable([
-					['Model', 'Accuracy'],
-					[jsonp.cars[0].model, jsonp.cars[0].accuracy],
-					[jsonp.cars[1].model, jsonp.cars[1].accuracy],
-					[jsonp.cars[2].model, jsonp.cars[2].accuracy],
-					[jsonp.cars[3].model, jsonp.cars[3].accuracy],
-					[jsonp.cars[4].model, jsonp.cars[4].accuracy]
-				]);
-			}*/
-/*			var data = new google.visualization.DataTable();
-			data.addColumn('string', 'Model');
-			data.addColumn('number', 'Accuracy');
-			data.addColumn({type: "string", role: "tooltip"});
-			data.addColumn({type: "stirng" role: "style"});
-			
-			var labels = [];
-			for(var i=0; i<jsonData.length; i++){
-				data.addRow([
-					jsonData[i].model,
-					jsonData[i].accuracy,
-					jsonData[i].accuracy = "pages between" + jsonData[i].low + "and " + jsonData[i].high					
-				]);
-				labels.push(jsonData[i].low);
-			}
-			labels.push(jsonData[jsonData.length -1].high);
-			
-			var chart = new google.visulization.ColumnChart(document.getElementById('chartDiv'));
-			chart draw(data, potions);*/
-		</script>
-
-
 	</div>
-	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Model', 'Accuracy'],
+          ["avante2016ad", 0.87631],
+          ["grandeur 2012", 0.08667],
+          ["k52016sx", 0.02673],
+          ["genesis", 0.00511],
+          ["grandeur2016hg", 0.00511]
+        ]);
+
+        var options = {
+          title: 'Reslut of vehicle type analysis',
+          width: 900,
+          legend: { position: 'none' },
+          chart: { title: 'Result',
+                   subtitle: 'Tensorflow' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
+	    <div id="top_x_div" style="width: 900px; height: 500px; margin: auto;"></div>
 </body>
 </html>
