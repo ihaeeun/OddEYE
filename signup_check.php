@@ -10,7 +10,6 @@
 	$grade = $_POST['grade'];
 
 $query = "insert into CLIENT (ID,PW,NAME,ADDRESS,PHONE_NUM,GRADE) values('".$userid."','".$userpw."','".$username."','".$adress."','".$phone."','".$grade."')";
-$
 
 ?>
 <meta charset="utf-8" />

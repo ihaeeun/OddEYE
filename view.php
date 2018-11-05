@@ -6,7 +6,7 @@ $key=$_POST['key'];
 $query = "select * from IMAGE where FILE_NAME='$key'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
-#$path = $row['file_path'].$row['file_name'];
+
 ?>
 <!doctype html>
 <html>
@@ -14,6 +14,14 @@ $row = mysqli_fetch_array($result);
 <meta charset="utf-8">
 <title><?php echo("$key"); ?></title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+		body{
+			background-image:url('res/imagefile/search.png');
+			background-color: #23211f;
+			background-size: cover;
+			
+		}
+	</style>
 </head>
 
 <body>
@@ -23,12 +31,16 @@ $row = mysqli_fetch_array($result);
 		<a href='logout.php'>logout</a>
 		</div>
 	</div>
+	<br><br><br><br><br><br><br><br><br><br><br>
 	<?php echo("<img src='".$row['FILE_ROUTE'].$row['FILE_NAME']."' width='500'>");?>
 	
 	<p></p>
-	<form action="test.php" method="POST">
+	<form action="result.php" method="POST">
 		<input name="key" type=submit value="차종 조회">
-		<?php echo("<input type='hidden' name='key' value='$key' />"); ?>
+		<?php echo("<input type='hidden' name='key' value='$key' />"); 
+		$query2 = "UPDATE IMAGE SET REQ=1 WHERE FILE_NAME='$key'";
+		mysqli_query($con, $query2);
+		?>
 	</form>
 </body>
 </html>

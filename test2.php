@@ -7,20 +7,20 @@
 
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
-          ['Opening Move', 'Percentage'],
-          ["King's pawn (e4)", 44],
-          ["Queen's pawn (d4)", 31],
-          ["Knight to King 3 (Nf3)", 12],
-          ["Queen's bishop pawn (c4)", 10],
-          ['Other', 3]
+          ['Model', 'Accuracy'],
+          ["avante2016ad", 0.87631],
+          ["grandeur 2012", 0.08667],
+          ["k52016sx", 0.02673],
+          ["genesis", 0.00511],
+          ["grandeur2016hg", 0.00511]
         ]);
 
         var options = {
-          title: 'Chess opening moves',
+          title: 'Reslut of vehicle type analysis',
           width: 900,
           legend: { position: 'none' },
-          chart: { title: 'Chess opening moves',
-                   subtitle: 'popularity by percentage' },
+          chart: { title: 'Result',
+                   subtitle: 'Tensorflow' },
           bars: 'horizontal', // Required for Material Bar Charts.
           axes: {
             x: {

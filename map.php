@@ -26,14 +26,12 @@
 		$str = fgets($fp, 20);
 		$gps[] = $str;
 	}
-	fclose($fp);
-	
-	
+	fclose($fp);	
 	?>
 	<script>
 		function initMap(){
-			var gps = new Array();
-			gps = <?php echo json_encode($gps)?>
+			//var gps = new Array();
+			//gps = <?php echo json_encode($gps)?>
 			//var loc = {lat: gps[0], lng: gps[1]};
 			var loc = {lat: 37.567335, lng: 126.9784698};
 			var map = new google.maps.Map(document.getElementById('map'), {zoom: 15, center: loc});

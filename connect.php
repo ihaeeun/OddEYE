@@ -2,7 +2,7 @@
 
 $db_host = "localhost";
 $db_user = "root";
-$db_password = "gmdmd1516!@#";
+$db_password = "1111";
 $db_name = "ODDEYE";
 
 
