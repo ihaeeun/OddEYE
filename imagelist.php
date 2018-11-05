@@ -28,8 +28,8 @@ if(!$row){
 			
 		}
 		h1{
-	color: white;
-}
+			color: white;
+		}
 	</style>
 </head>
 <body> 

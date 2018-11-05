@@ -27,7 +27,7 @@ $row = mysqli_fetch_array($result);
 		<a href='logout.php'>logout</a>
 		</div>
 	</div>
-
+	<br><br><br>
 	<div>
 		<div align="center" >
 			<?php echo("<img src='".$row['FILE_ROUTE'].$row['FILE_NAME']."' width='400'>	"); ?>	
@@ -54,7 +54,7 @@ $row = mysqli_fetch_array($result);
           width: 900,
           legend: { position: 'none' },
           chart: { title: 'Result',
-                   subtitle: 'Tensorflow' },
+                   subtitle: 'Tensorflowj' },
           bars: 'horizontal', // Required for Material Bar Charts.
           axes: {
             x: {
